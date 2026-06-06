@@ -1,0 +1,1865 @@
+{
+  "dataset": "ai_dashboard_project_documents",
+  "project": "AI Dashboard",
+  "generated_at": "2026-05-31T00:00:00Z",
+  "record_count": 50,
+  "document_types": [
+    "architecture document",
+    "meeting notes",
+    "release plan",
+    "deployment procedure",
+    "incident report"
+  ],
+  "documents": [
+    {
+      "document_id": "DOC-AIDASH-001",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Aarav Mehta",
+      "service": "auth-service",
+      "environment": "staging",
+      "version": "v1.0",
+      "created_date": "2026-01-10",
+      "related_ticket_ids": [
+        "AIDASH-1001",
+        "AIDASH-1018"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "AI Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for staging releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-002",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Leena Thomas",
+      "service": "analytics-worker",
+      "environment": "production",
+      "version": "v1.1",
+      "created_date": "2026-01-13",
+      "related_ticket_ids": [
+        "AIDASH-1004",
+        "AIDASH-1021"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1004, AIDASH-1021."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to prioritize trace correlation for timeout and authentication incidents."
+        },
+        {
+          "heading": "Action Items",
+          "body": "Data Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-003",
+      "title": "AI Dashboard release plan for model-insights-service dev",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Sara Fernandes",
+      "service": "model-insights-service",
+      "environment": "dev",
+      "version": "v1.2",
+      "created_date": "2026-01-16",
+      "related_ticket_ids": [
+        "AIDASH-1007",
+        "AIDASH-1024"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for dev with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-004",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Nisha Rao",
+      "service": "admin-console",
+      "environment": "staging",
+      "version": "v1.3",
+      "created_date": "2026-01-19",
+      "related_ticket_ids": [
+        "AIDASH-1010",
+        "AIDASH-1027"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-005",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Anika Bose",
+      "service": "vector-search-gateway",
+      "environment": "production",
+      "version": "v1.4",
+      "created_date": "2026-01-22",
+      "related_ticket_ids": [
+        "AIDASH-1013",
+        "AIDASH-1030"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in production. The event was linked to tickets AIDASH-1013, AIDASH-1030."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A stale permission cache blocked valid users after an SSO group mapping change."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-006",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Maya Iyer",
+      "service": "auth-service",
+      "environment": "dev",
+      "version": "v1.5",
+      "created_date": "2026-01-25",
+      "related_ticket_ids": [
+        "AIDASH-1016",
+        "AIDASH-1033"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "Data Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for dev releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-007",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Dev Patel",
+      "service": "analytics-worker",
+      "environment": "staging",
+      "version": "v1.6",
+      "created_date": "2026-01-28",
+      "related_ticket_ids": [
+        "AIDASH-1019",
+        "AIDASH-1036"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1019, AIDASH-1036."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to move dashboard freshness checks into release verification."
+        },
+        {
+          "heading": "Action Items",
+          "body": "AI Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-008",
+      "title": "AI Dashboard release plan for model-insights-service production",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Neil D'Souza",
+      "service": "model-insights-service",
+      "environment": "production",
+      "version": "v1.7",
+      "created_date": "2026-01-31",
+      "related_ticket_ids": [
+        "AIDASH-1022",
+        "AIDASH-1039"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for production with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-009",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Kabir Singh",
+      "service": "admin-console",
+      "environment": "dev",
+      "version": "v1.8",
+      "created_date": "2026-02-03",
+      "related_ticket_ids": [
+        "AIDASH-1025",
+        "AIDASH-1042"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-010",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Vikram Kapoor",
+      "service": "vector-search-gateway",
+      "environment": "staging",
+      "version": "v1.9",
+      "created_date": "2026-02-06",
+      "related_ticket_ids": [
+        "AIDASH-1028",
+        "AIDASH-1045"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in staging. The event was linked to tickets AIDASH-1028, AIDASH-1045."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "Warehouse replication lag made the dashboard present stale AI usage aggregates."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-011",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Rohan Shah",
+      "service": "auth-service",
+      "environment": "production",
+      "version": "v2.0",
+      "created_date": "2026-02-09",
+      "related_ticket_ids": [
+        "AIDASH-1031",
+        "AIDASH-1048"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "AI Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for production releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-012",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Priya Nair",
+      "service": "analytics-worker",
+      "environment": "dev",
+      "version": "v2.1",
+      "created_date": "2026-02-12",
+      "related_ticket_ids": [
+        "AIDASH-1034",
+        "AIDASH-1051"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1034, AIDASH-1051."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to move dashboard freshness checks into release verification."
+        },
+        {
+          "heading": "Action Items",
+          "body": "Data Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-013",
+      "title": "AI Dashboard release plan for model-insights-service staging",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Aarav Mehta",
+      "service": "model-insights-service",
+      "environment": "staging",
+      "version": "v2.2",
+      "created_date": "2026-02-15",
+      "related_ticket_ids": [
+        "AIDASH-1037",
+        "AIDASH-1054"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for staging with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-014",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Leena Thomas",
+      "service": "admin-console",
+      "environment": "production",
+      "version": "v2.3",
+      "created_date": "2026-02-18",
+      "related_ticket_ids": [
+        "AIDASH-1040",
+        "AIDASH-1057"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-015",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Sara Fernandes",
+      "service": "vector-search-gateway",
+      "environment": "dev",
+      "version": "v2.4",
+      "created_date": "2026-02-21",
+      "related_ticket_ids": [
+        "AIDASH-1043",
+        "AIDASH-1060"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in dev. The event was linked to tickets AIDASH-1043, AIDASH-1060."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A migration lock delayed dashboard reads and caused downstream API timeouts."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-016",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Nisha Rao",
+      "service": "auth-service",
+      "environment": "staging",
+      "version": "v2.5",
+      "created_date": "2026-02-24",
+      "related_ticket_ids": [
+        "AIDASH-1046",
+        "AIDASH-1063"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "Data Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for staging releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-017",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Anika Bose",
+      "service": "analytics-worker",
+      "environment": "production",
+      "version": "v2.6",
+      "created_date": "2026-02-27",
+      "related_ticket_ids": [
+        "AIDASH-1049",
+        "AIDASH-1066"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1049, AIDASH-1066."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to prioritize trace correlation for timeout and authentication incidents."
+        },
+        {
+          "heading": "Action Items",
+          "body": "AI Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-018",
+      "title": "AI Dashboard release plan for model-insights-service dev",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Maya Iyer",
+      "service": "model-insights-service",
+      "environment": "dev",
+      "version": "v2.7",
+      "created_date": "2026-03-02",
+      "related_ticket_ids": [
+        "AIDASH-1052",
+        "AIDASH-1069"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for dev with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-019",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Dev Patel",
+      "service": "admin-console",
+      "environment": "staging",
+      "version": "v2.8",
+      "created_date": "2026-03-05",
+      "related_ticket_ids": [
+        "AIDASH-1055",
+        "AIDASH-1072"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-020",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Neil D'Souza",
+      "service": "vector-search-gateway",
+      "environment": "production",
+      "version": "v2.9",
+      "created_date": "2026-03-08",
+      "related_ticket_ids": [
+        "AIDASH-1058",
+        "AIDASH-1075"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in production. The event was linked to tickets AIDASH-1058, AIDASH-1075."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A canary deployment used a mismatched environment variable for the telemetry stream."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-021",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Kabir Singh",
+      "service": "auth-service",
+      "environment": "dev",
+      "version": "v3.0",
+      "created_date": "2026-03-11",
+      "related_ticket_ids": [
+        "AIDASH-1061",
+        "AIDASH-1078"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "AI Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for dev releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-022",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Vikram Kapoor",
+      "service": "analytics-worker",
+      "environment": "staging",
+      "version": "v3.1",
+      "created_date": "2026-03-14",
+      "related_ticket_ids": [
+        "AIDASH-1064",
+        "AIDASH-1081"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1064, AIDASH-1081."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to move dashboard freshness checks into release verification."
+        },
+        {
+          "heading": "Action Items",
+          "body": "Data Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-023",
+      "title": "AI Dashboard release plan for model-insights-service production",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Rohan Shah",
+      "service": "model-insights-service",
+      "environment": "production",
+      "version": "v3.2",
+      "created_date": "2026-03-17",
+      "related_ticket_ids": [
+        "AIDASH-1067",
+        "AIDASH-1084"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for production with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-024",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Priya Nair",
+      "service": "admin-console",
+      "environment": "dev",
+      "version": "v3.3",
+      "created_date": "2026-03-20",
+      "related_ticket_ids": [
+        "AIDASH-1070",
+        "AIDASH-1087"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-025",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Aarav Mehta",
+      "service": "vector-search-gateway",
+      "environment": "staging",
+      "version": "v3.4",
+      "created_date": "2026-03-23",
+      "related_ticket_ids": [
+        "AIDASH-1073",
+        "AIDASH-1090"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in staging. The event was linked to tickets AIDASH-1073, AIDASH-1090."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A stale permission cache blocked valid users after an SSO group mapping change."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-026",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Leena Thomas",
+      "service": "auth-service",
+      "environment": "production",
+      "version": "v3.5",
+      "created_date": "2026-03-26",
+      "related_ticket_ids": [
+        "AIDASH-1076",
+        "AIDASH-1093"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "Data Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for production releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-027",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Sara Fernandes",
+      "service": "analytics-worker",
+      "environment": "dev",
+      "version": "v3.6",
+      "created_date": "2026-03-29",
+      "related_ticket_ids": [
+        "AIDASH-1079",
+        "AIDASH-1096"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1079, AIDASH-1096."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to prioritize trace correlation for timeout and authentication incidents."
+        },
+        {
+          "heading": "Action Items",
+          "body": "AI Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-028",
+      "title": "AI Dashboard release plan for model-insights-service staging",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Nisha Rao",
+      "service": "model-insights-service",
+      "environment": "staging",
+      "version": "v3.7",
+      "created_date": "2026-04-01",
+      "related_ticket_ids": [
+        "AIDASH-1082",
+        "AIDASH-1099"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for staging with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-029",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Anika Bose",
+      "service": "admin-console",
+      "environment": "production",
+      "version": "v3.8",
+      "created_date": "2026-04-04",
+      "related_ticket_ids": [
+        "AIDASH-1085",
+        "AIDASH-1102"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-030",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Maya Iyer",
+      "service": "vector-search-gateway",
+      "environment": "dev",
+      "version": "v3.9",
+      "created_date": "2026-04-07",
+      "related_ticket_ids": [
+        "AIDASH-1088",
+        "AIDASH-1105"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in dev. The event was linked to tickets AIDASH-1088, AIDASH-1105."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "Warehouse replication lag made the dashboard present stale AI usage aggregates."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-031",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Dev Patel",
+      "service": "auth-service",
+      "environment": "staging",
+      "version": "v4.0",
+      "created_date": "2026-04-10",
+      "related_ticket_ids": [
+        "AIDASH-1091",
+        "AIDASH-1108"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "AI Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for staging releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-032",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Neil D'Souza",
+      "service": "analytics-worker",
+      "environment": "production",
+      "version": "v4.1",
+      "created_date": "2026-04-13",
+      "related_ticket_ids": [
+        "AIDASH-1094",
+        "AIDASH-1111"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1094, AIDASH-1111."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to move dashboard freshness checks into release verification."
+        },
+        {
+          "heading": "Action Items",
+          "body": "Data Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-033",
+      "title": "AI Dashboard release plan for model-insights-service dev",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Kabir Singh",
+      "service": "model-insights-service",
+      "environment": "dev",
+      "version": "v4.2",
+      "created_date": "2026-04-16",
+      "related_ticket_ids": [
+        "AIDASH-1097",
+        "AIDASH-1114"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for dev with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-034",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Vikram Kapoor",
+      "service": "admin-console",
+      "environment": "staging",
+      "version": "v4.3",
+      "created_date": "2026-04-19",
+      "related_ticket_ids": [
+        "AIDASH-1100",
+        "AIDASH-1117"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-035",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Rohan Shah",
+      "service": "vector-search-gateway",
+      "environment": "production",
+      "version": "v4.4",
+      "created_date": "2026-04-22",
+      "related_ticket_ids": [
+        "AIDASH-1103",
+        "AIDASH-1120"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in production. The event was linked to tickets AIDASH-1103, AIDASH-1120."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A migration lock delayed dashboard reads and caused downstream API timeouts."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-036",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Priya Nair",
+      "service": "auth-service",
+      "environment": "dev",
+      "version": "v4.5",
+      "created_date": "2026-04-25",
+      "related_ticket_ids": [
+        "AIDASH-1106",
+        "AIDASH-1123"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "Data Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for dev releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-037",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Aarav Mehta",
+      "service": "analytics-worker",
+      "environment": "staging",
+      "version": "v4.6",
+      "created_date": "2026-04-28",
+      "related_ticket_ids": [
+        "AIDASH-1109",
+        "AIDASH-1126"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1109, AIDASH-1126."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to prioritize trace correlation for timeout and authentication incidents."
+        },
+        {
+          "heading": "Action Items",
+          "body": "AI Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-038",
+      "title": "AI Dashboard release plan for model-insights-service production",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Leena Thomas",
+      "service": "model-insights-service",
+      "environment": "production",
+      "version": "v4.7",
+      "created_date": "2026-05-01",
+      "related_ticket_ids": [
+        "AIDASH-1112",
+        "AIDASH-1129"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for production with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-039",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Sara Fernandes",
+      "service": "admin-console",
+      "environment": "dev",
+      "version": "v4.8",
+      "created_date": "2026-05-04",
+      "related_ticket_ids": [
+        "AIDASH-1115",
+        "AIDASH-1132"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-040",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Nisha Rao",
+      "service": "vector-search-gateway",
+      "environment": "staging",
+      "version": "v4.9",
+      "created_date": "2026-05-07",
+      "related_ticket_ids": [
+        "AIDASH-1118",
+        "AIDASH-1135"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in staging. The event was linked to tickets AIDASH-1118, AIDASH-1135."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A stale permission cache blocked valid users after an SSO group mapping change."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-041",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Anika Bose",
+      "service": "auth-service",
+      "environment": "production",
+      "version": "v5.0",
+      "created_date": "2026-05-10",
+      "related_ticket_ids": [
+        "AIDASH-1121",
+        "AIDASH-1138"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "AI Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for production releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-042",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Maya Iyer",
+      "service": "analytics-worker",
+      "environment": "dev",
+      "version": "v5.1",
+      "created_date": "2026-05-13",
+      "related_ticket_ids": [
+        "AIDASH-1124",
+        "AIDASH-1141"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1124, AIDASH-1141."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to tighten canary promotion criteria before the next production rollout."
+        },
+        {
+          "heading": "Action Items",
+          "body": "Data Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-043",
+      "title": "AI Dashboard release plan for model-insights-service staging",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Dev Patel",
+      "service": "model-insights-service",
+      "environment": "staging",
+      "version": "v5.2",
+      "created_date": "2026-05-16",
+      "related_ticket_ids": [
+        "AIDASH-1127",
+        "AIDASH-1144"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for staging with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-044",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Neil D'Souza",
+      "service": "admin-console",
+      "environment": "production",
+      "version": "v5.3",
+      "created_date": "2026-05-19",
+      "related_ticket_ids": [
+        "AIDASH-1130",
+        "AIDASH-1147"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-045",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Kabir Singh",
+      "service": "vector-search-gateway",
+      "environment": "dev",
+      "version": "v5.4",
+      "created_date": "2026-05-22",
+      "related_ticket_ids": [
+        "AIDASH-1133",
+        "AIDASH-1150"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in dev. The event was linked to tickets AIDASH-1133, AIDASH-1150."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A canary deployment used a mismatched environment variable for the telemetry stream."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-046",
+      "title": "AI Dashboard auth-service architecture and data contracts",
+      "document_type": "architecture document",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Vikram Kapoor",
+      "service": "auth-service",
+      "environment": "staging",
+      "version": "v5.5",
+      "created_date": "2026-05-25",
+      "related_ticket_ids": [
+        "AIDASH-1136",
+        "AIDASH-1003"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "architecture-document",
+        "auth-service",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Context",
+          "body": "auth-service supports the AI Dashboard by normalizing operational telemetry, authorization context, and deployment metadata for enterprise tenants."
+        },
+        {
+          "heading": "Key Interfaces",
+          "body": "Primary interfaces include the tenant-scoped REST API, the metrics event stream, the dashboard read model, and the audit event sink."
+        },
+        {
+          "heading": "Reliability Notes",
+          "body": "Data Platform owns SLO review, circuit-breaker thresholds, schema compatibility, and rollback readiness for staging releases."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-047",
+      "title": "AI Dashboard operations review notes for analytics-worker",
+      "document_type": "meeting notes",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Rohan Shah",
+      "service": "analytics-worker",
+      "environment": "production",
+      "version": "v5.6",
+      "created_date": "2026-05-28",
+      "related_ticket_ids": [
+        "AIDASH-1139",
+        "AIDASH-1006"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "meeting-notes",
+        "analytics-worker",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Discussion",
+          "body": "The operations review focused on analytics-worker, open support escalations, and recurring evidence gaps across tickets AIDASH-1139, AIDASH-1006."
+        },
+        {
+          "heading": "Decision",
+          "body": "The team agreed to prioritize trace correlation for timeout and authentication incidents."
+        },
+        {
+          "heading": "Action Items",
+          "body": "AI Platform will publish owner rotation updates, validate alert thresholds, and confirm all deployment logs include tenant and trace identifiers."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-048",
+      "title": "AI Dashboard release plan for model-insights-service dev",
+      "document_type": "release plan",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Priya Nair",
+      "service": "model-insights-service",
+      "environment": "dev",
+      "version": "v5.7",
+      "created_date": "2026-05-31",
+      "related_ticket_ids": [
+        "AIDASH-1142",
+        "AIDASH-1009"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "release-plan",
+        "model-insights-service",
+        "dev",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Scope",
+          "body": "The release updates model-insights-service for dev with dashboard query tuning, freshness indicators, and improved incident correlation metadata."
+        },
+        {
+          "heading": "Readiness Gates",
+          "body": "Required gates include migration dry run, API p95 latency check, SSO smoke test, rollback rehearsal, and support knowledge-base validation."
+        },
+        {
+          "heading": "Risks",
+          "body": "Main risks are tenant-specific feature flags, warehouse replication lag, and mismatched schema versions between analytics workers and dashboard APIs."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-049",
+      "title": "AI Dashboard deployment procedure for admin-console",
+      "document_type": "deployment procedure",
+      "project": "AI Dashboard",
+      "owner_team": "AI Platform",
+      "owner": "Aarav Mehta",
+      "service": "admin-console",
+      "environment": "staging",
+      "version": "v5.8",
+      "created_date": "2026-06-03",
+      "related_ticket_ids": [
+        "AIDASH-1145",
+        "AIDASH-1012"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "deployment-procedure",
+        "admin-console",
+        "staging",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Pre-Deployment",
+          "body": "Confirm admin-console image digest, database migration status, feature flag plan, and active incident freeze exceptions before starting the deployment."
+        },
+        {
+          "heading": "Execution",
+          "body": "Deploy to canary, wait for health probes, compare dashboard synthetic checks, promote gradually, then capture trace and audit samples."
+        },
+        {
+          "heading": "Rollback",
+          "body": "Rollback must disable new dashboard flags, restore the previous image, and verify that deployment logs are linked to the active release ticket."
+        }
+      ]
+    },
+    {
+      "document_id": "DOC-AIDASH-050",
+      "title": "AI Dashboard incident report for vector-search-gateway degradation",
+      "document_type": "incident report",
+      "project": "AI Dashboard",
+      "owner_team": "Data Platform",
+      "owner": "Leena Thomas",
+      "service": "vector-search-gateway",
+      "environment": "production",
+      "version": "v5.9",
+      "created_date": "2026-06-06",
+      "related_ticket_ids": [
+        "AIDASH-1148",
+        "AIDASH-1015"
+      ],
+      "tags": [
+        "ai-dashboard",
+        "incident-report",
+        "vector-search-gateway",
+        "production",
+        "enterprise-ops"
+      ],
+      "sections": [
+        {
+          "heading": "Summary",
+          "body": "vector-search-gateway experienced degraded behavior in production. The event was linked to tickets AIDASH-1148, AIDASH-1015."
+        },
+        {
+          "heading": "Root Cause",
+          "body": "A stale permission cache blocked valid users after an SSO group mapping change."
+        },
+        {
+          "heading": "Corrective Actions",
+          "body": "Add synthetic coverage, enforce deployment evidence capture, update runbooks, and create follow-up backlog items for unresolved monitoring gaps."
+        }
+      ]
+    }
+  ]
+}

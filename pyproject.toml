@@ -1,0 +1,33 @@
+[project]
+name = "enterprise-ai-ops-assistant"
+version = "0.1.0"
+description = "Enterprise AI Operations Assistant simulation with independent FastMCP data servers."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "fastmcp>=2.4.1,<4.0",
+  "httpx>=0.28,<1.0",
+  "langchain-core>=1.0,<2.0",
+  "langchain-openai>=1.0,<2.0",
+  "langgraph>=1.2,<2.0",
+  "pandas>=2.2,<3.0",
+  "pydantic>=2.8,<3.0",
+  "pydantic-settings>=2.6,<3.0",
+  "streamlit>=1.45,<2.0",
+  "uvicorn[standard]>=0.32,<1.0",
+]
+
+[project.optional-dependencies]
+dev = []
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "mcp_servers*"]
+
+[tool.pyright]
+typeCheckingMode = "basic"
+pythonVersion = "3.11"

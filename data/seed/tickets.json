@@ -1,0 +1,1518 @@
+{
+  "dataset": "ai_dashboard_jira_style_tickets",
+  "project": "AI Dashboard",
+  "generated_at": "2026-05-31T00:00:00Z",
+  "record_count": 150,
+  "schema": {
+    "ticket_id": "string",
+    "title": "string",
+    "description": "string",
+    "priority": "P0 | P1 | P2 | P3 | P4",
+    "status": "Backlog | In Progress | Blocked | In Review | Resolved | Closed",
+    "owner": "string",
+    "dependency": "string",
+    "created_date": "YYYY-MM-DD"
+  },
+  "tickets": [
+    {
+      "ticket_id": "AIDASH-1001",
+      "title": "usage analytics panel intermittently times out through dashboard-api",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: operators cannot triage model incidents from the live board. Detected by synthetic monitor while validating dashboard-api. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-01-06"
+    },
+    {
+      "ticket_id": "AIDASH-1002",
+      "title": "analytics-worker rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: support teams cannot open customer-specific health dashboards. Detected by customer support escalation while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-01-07"
+    },
+    {
+      "ticket_id": "AIDASH-1003",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by weekly adoption review while validating notification-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-01-08"
+    },
+    {
+      "ticket_id": "AIDASH-1004",
+      "title": "vector-search-gateway deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: production verification cannot complete within the maintenance window. Detected by synthetic monitor while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-01-09"
+    },
+    {
+      "ticket_id": "AIDASH-1005",
+      "title": "telemetry-ingestion cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by customer support escalation while validating telemetry-ingestion. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-01-10"
+    },
+    {
+      "ticket_id": "AIDASH-1006",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: platform operators cannot scan incidents across large portfolios. Detected by weekly adoption review while validating model-insights-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-01-11"
+    },
+    {
+      "ticket_id": "AIDASH-1007",
+      "title": "usage analytics panel intermittently times out through feature-store-sync",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: executive users see incomplete cost and usage summaries. Detected by weekly adoption review while validating feature-store-sync. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-01-12"
+    },
+    {
+      "ticket_id": "AIDASH-1008",
+      "title": "auth-service rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: support teams cannot open customer-specific health dashboards. Detected by SRE anomaly detector while validating auth-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-01-13"
+    },
+    {
+      "ticket_id": "AIDASH-1009",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: late-arriving embeddings are excluded from quality scorecards. Impact: customer success teams rely on outdated adoption metrics. Detected by customer support escalation while validating reporting-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-01-14"
+    },
+    {
+      "ticket_id": "AIDASH-1010",
+      "title": "admin-console deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: the release train is paused for the AI Dashboard program. Detected by SRE anomaly detector while validating admin-console. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-01-15"
+    },
+    {
+      "ticket_id": "AIDASH-1011",
+      "title": "dashboard-api cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by weekly adoption review while validating dashboard-api. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-01-16"
+    },
+    {
+      "ticket_id": "AIDASH-1012",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: tenant administrators repeat manual filtering after every refresh. Detected by SRE anomaly detector while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-01-17"
+    },
+    {
+      "ticket_id": "AIDASH-1013",
+      "title": "usage analytics panel intermittently times out through notification-service",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: interactive filters spin for longer than 20 seconds before failing. Impact: operators cannot triage model incidents from the live board. Detected by weekly adoption review while validating notification-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1005",
+      "created_date": "2026-01-18"
+    },
+    {
+      "ticket_id": "AIDASH-1014",
+      "title": "vector-search-gateway rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: tenant admins cannot audit model usage permissions. Detected by release verification checklist while validating vector-search-gateway. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-01-19"
+    },
+    {
+      "ticket_id": "AIDASH-1015",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: customer success teams rely on outdated adoption metrics. Detected by synthetic monitor while validating telemetry-ingestion. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-01-20"
+    },
+    {
+      "ticket_id": "AIDASH-1016",
+      "title": "model-insights-service deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by customer support escalation while validating model-insights-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-01-21"
+    },
+    {
+      "ticket_id": "AIDASH-1017",
+      "title": "feature-store-sync cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by SRE anomaly detector while validating feature-store-sync. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1014",
+      "created_date": "2026-01-22"
+    },
+    {
+      "ticket_id": "AIDASH-1018",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: business stakeholders export inconsistent weekly summaries. Detected by customer support escalation while validating auth-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-01-23"
+    },
+    {
+      "ticket_id": "AIDASH-1019",
+      "title": "usage analytics panel intermittently times out through reporting-service",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by synthetic monitor while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-01-24"
+    },
+    {
+      "ticket_id": "AIDASH-1020",
+      "title": "admin-console rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: tenant admins cannot audit model usage permissions. Detected by customer support escalation while validating admin-console. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-01-25"
+    },
+    {
+      "ticket_id": "AIDASH-1021",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: late-arriving embeddings are excluded from quality scorecards. Impact: product owners cannot compare model performance after release. Detected by release verification checklist while validating dashboard-api. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1014",
+      "created_date": "2026-01-26"
+    },
+    {
+      "ticket_id": "AIDASH-1022",
+      "title": "analytics-worker deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by customer support escalation while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-01-27"
+    },
+    {
+      "ticket_id": "AIDASH-1023",
+      "title": "notification-service cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by release verification checklist while validating notification-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-01-28"
+    },
+    {
+      "ticket_id": "AIDASH-1024",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: tenant administrators repeat manual filtering after every refresh. Detected by release verification checklist while validating vector-search-gateway. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-01-29"
+    },
+    {
+      "ticket_id": "AIDASH-1025",
+      "title": "usage analytics panel intermittently times out through telemetry-ingestion",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: executive users see incomplete cost and usage summaries. Detected by SRE anomaly detector while validating telemetry-ingestion. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1022",
+      "created_date": "2026-01-30"
+    },
+    {
+      "ticket_id": "AIDASH-1026",
+      "title": "model-insights-service rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: support teams cannot open customer-specific health dashboards. Detected by customer support escalation while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-01-31"
+    },
+    {
+      "ticket_id": "AIDASH-1027",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by SRE anomaly detector while validating feature-store-sync. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-02-01"
+    },
+    {
+      "ticket_id": "AIDASH-1028",
+      "title": "auth-service deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by customer support escalation while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-02-02"
+    },
+    {
+      "ticket_id": "AIDASH-1029",
+      "title": "reporting-service cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by synthetic monitor while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1022",
+      "created_date": "2026-02-03"
+    },
+    {
+      "ticket_id": "AIDASH-1030",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: tenant administrators repeat manual filtering after every refresh. Detected by SRE anomaly detector while validating admin-console. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-02-04"
+    },
+    {
+      "ticket_id": "AIDASH-1031",
+      "title": "usage analytics panel intermittently times out through dashboard-api",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: interactive filters spin for longer than 20 seconds before failing. Impact: executive users see incomplete cost and usage summaries. Detected by weekly adoption review while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-02-05"
+    },
+    {
+      "ticket_id": "AIDASH-1032",
+      "title": "analytics-worker rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: release managers lose access during production verification. Detected by weekly adoption review while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-02-06"
+    },
+    {
+      "ticket_id": "AIDASH-1033",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by synthetic monitor while validating notification-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1025",
+      "created_date": "2026-02-07"
+    },
+    {
+      "ticket_id": "AIDASH-1034",
+      "title": "vector-search-gateway deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: production verification cannot complete within the maintenance window. Detected by synthetic monitor while validating vector-search-gateway. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-02-08"
+    },
+    {
+      "ticket_id": "AIDASH-1035",
+      "title": "telemetry-ingestion cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by SRE anomaly detector while validating telemetry-ingestion. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-02-09"
+    },
+    {
+      "ticket_id": "AIDASH-1036",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: tenant administrators repeat manual filtering after every refresh. Detected by release verification checklist while validating model-insights-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-02-10"
+    },
+    {
+      "ticket_id": "AIDASH-1037",
+      "title": "usage analytics panel intermittently times out through feature-store-sync",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: operators cannot triage model incidents from the live board. Detected by release verification checklist while validating feature-store-sync. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1034",
+      "created_date": "2026-02-11"
+    },
+    {
+      "ticket_id": "AIDASH-1038",
+      "title": "auth-service rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: support teams cannot open customer-specific health dashboards. Detected by weekly adoption review while validating auth-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-02-12"
+    },
+    {
+      "ticket_id": "AIDASH-1039",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: product owners cannot compare model performance after release. Detected by SRE anomaly detector while validating reporting-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-02-13"
+    },
+    {
+      "ticket_id": "AIDASH-1040",
+      "title": "admin-console deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: production verification cannot complete within the maintenance window. Detected by release verification checklist while validating admin-console. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-02-14"
+    },
+    {
+      "ticket_id": "AIDASH-1041",
+      "title": "dashboard-api cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by weekly adoption review while validating dashboard-api. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1039",
+      "created_date": "2026-02-15"
+    },
+    {
+      "ticket_id": "AIDASH-1042",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: business stakeholders export inconsistent weekly summaries. Detected by synthetic monitor while validating analytics-worker. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-02-16"
+    },
+    {
+      "ticket_id": "AIDASH-1043",
+      "title": "usage analytics panel intermittently times out through notification-service",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: SRE dashboards miss current deployment health markers. Detected by SRE anomaly detector while validating notification-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-02-17"
+    },
+    {
+      "ticket_id": "AIDASH-1044",
+      "title": "vector-search-gateway rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: tenant admins cannot audit model usage permissions. Detected by weekly adoption review while validating vector-search-gateway. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-02-18"
+    },
+    {
+      "ticket_id": "AIDASH-1045",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: incident commanders lose confidence in the operational timeline. Detected by customer support escalation while validating telemetry-ingestion. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1040",
+      "created_date": "2026-02-19"
+    },
+    {
+      "ticket_id": "AIDASH-1046",
+      "title": "model-insights-service deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: dependent analytics features remain behind a release hold. Detected by release verification checklist while validating model-insights-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-02-20"
+    },
+    {
+      "ticket_id": "AIDASH-1047",
+      "title": "feature-store-sync cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by synthetic monitor while validating feature-store-sync. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-02-21"
+    },
+    {
+      "ticket_id": "AIDASH-1048",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: platform operators cannot scan incidents across large portfolios. Detected by release verification checklist while validating auth-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-02-22"
+    },
+    {
+      "ticket_id": "AIDASH-1049",
+      "title": "usage analytics panel intermittently times out through reporting-service",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by customer support escalation while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1047",
+      "created_date": "2026-02-23"
+    },
+    {
+      "ticket_id": "AIDASH-1050",
+      "title": "admin-console rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: tenant admins cannot audit model usage permissions. Detected by synthetic monitor while validating admin-console. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-02-24"
+    },
+    {
+      "ticket_id": "AIDASH-1051",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: customer success teams rely on outdated adoption metrics. Detected by release verification checklist while validating dashboard-api. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-02-25"
+    },
+    {
+      "ticket_id": "AIDASH-1052",
+      "title": "analytics-worker deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: the release train is paused for the AI Dashboard program. Detected by release verification checklist while validating analytics-worker. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-02-26"
+    },
+    {
+      "ticket_id": "AIDASH-1053",
+      "title": "notification-service cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: SREs cannot compare pre-release and post-release behavior. Detected by customer support escalation while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1050",
+      "created_date": "2026-02-27"
+    },
+    {
+      "ticket_id": "AIDASH-1054",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: business stakeholders export inconsistent weekly summaries. Detected by customer support escalation while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-02-28"
+    },
+    {
+      "ticket_id": "AIDASH-1055",
+      "title": "usage analytics panel intermittently times out through telemetry-ingestion",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: SRE dashboards miss current deployment health markers. Detected by SRE anomaly detector while validating telemetry-ingestion. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-03-01"
+    },
+    {
+      "ticket_id": "AIDASH-1056",
+      "title": "model-insights-service rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: release managers lose access during production verification. Detected by SRE anomaly detector while validating model-insights-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-03-02"
+    },
+    {
+      "ticket_id": "AIDASH-1057",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by synthetic monitor while validating feature-store-sync. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1052",
+      "created_date": "2026-03-03"
+    },
+    {
+      "ticket_id": "AIDASH-1058",
+      "title": "auth-service deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: production verification cannot complete within the maintenance window. Detected by synthetic monitor while validating auth-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-03-04"
+    },
+    {
+      "ticket_id": "AIDASH-1059",
+      "title": "reporting-service cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by weekly adoption review while validating reporting-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-03-05"
+    },
+    {
+      "ticket_id": "AIDASH-1060",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: business stakeholders export inconsistent weekly summaries. Detected by customer support escalation while validating admin-console. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-03-06"
+    },
+    {
+      "ticket_id": "AIDASH-1061",
+      "title": "usage analytics panel intermittently times out through dashboard-api",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: interactive filters spin for longer than 20 seconds before failing. Impact: operators cannot triage model incidents from the live board. Detected by synthetic monitor while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1053",
+      "created_date": "2026-03-07"
+    },
+    {
+      "ticket_id": "AIDASH-1062",
+      "title": "analytics-worker rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: support teams cannot open customer-specific health dashboards. Detected by synthetic monitor while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-03-08"
+    },
+    {
+      "ticket_id": "AIDASH-1063",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: customer success teams rely on outdated adoption metrics. Detected by customer support escalation while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-03-09"
+    },
+    {
+      "ticket_id": "AIDASH-1064",
+      "title": "vector-search-gateway deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: production verification cannot complete within the maintenance window. Detected by customer support escalation while validating vector-search-gateway. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-03-10"
+    },
+    {
+      "ticket_id": "AIDASH-1065",
+      "title": "telemetry-ingestion cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by SRE anomaly detector while validating telemetry-ingestion. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1060",
+      "created_date": "2026-03-11"
+    },
+    {
+      "ticket_id": "AIDASH-1066",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: business stakeholders export inconsistent weekly summaries. Detected by release verification checklist while validating model-insights-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-03-12"
+    },
+    {
+      "ticket_id": "AIDASH-1067",
+      "title": "usage analytics panel intermittently times out through feature-store-sync",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by weekly adoption review while validating feature-store-sync. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-03-13"
+    },
+    {
+      "ticket_id": "AIDASH-1068",
+      "title": "auth-service rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: support teams cannot open customer-specific health dashboards. Detected by release verification checklist while validating auth-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-03-14"
+    },
+    {
+      "ticket_id": "AIDASH-1069",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: incident commanders lose confidence in the operational timeline. Detected by weekly adoption review while validating reporting-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1062",
+      "created_date": "2026-03-15"
+    },
+    {
+      "ticket_id": "AIDASH-1070",
+      "title": "admin-console deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by synthetic monitor while validating admin-console. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-03-16"
+    },
+    {
+      "ticket_id": "AIDASH-1071",
+      "title": "dashboard-api cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: SREs cannot compare pre-release and post-release behavior. Detected by customer support escalation while validating dashboard-api. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-03-17"
+    },
+    {
+      "ticket_id": "AIDASH-1072",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: platform operators cannot scan incidents across large portfolios. Detected by customer support escalation while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-03-18"
+    },
+    {
+      "ticket_id": "AIDASH-1073",
+      "title": "usage analytics panel intermittently times out through notification-service",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: operators cannot triage model incidents from the live board. Detected by customer support escalation while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1071",
+      "created_date": "2026-03-19"
+    },
+    {
+      "ticket_id": "AIDASH-1074",
+      "title": "vector-search-gateway rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: support teams cannot open customer-specific health dashboards. Detected by weekly adoption review while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-03-20"
+    },
+    {
+      "ticket_id": "AIDASH-1075",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: customer success teams rely on outdated adoption metrics. Detected by SRE anomaly detector while validating telemetry-ingestion. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-03-21"
+    },
+    {
+      "ticket_id": "AIDASH-1076",
+      "title": "model-insights-service deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by release verification checklist while validating model-insights-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-03-22"
+    },
+    {
+      "ticket_id": "AIDASH-1077",
+      "title": "feature-store-sync cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by customer support escalation while validating feature-store-sync. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1072",
+      "created_date": "2026-03-23"
+    },
+    {
+      "ticket_id": "AIDASH-1078",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: platform operators cannot scan incidents across large portfolios. Detected by synthetic monitor while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-03-24"
+    },
+    {
+      "ticket_id": "AIDASH-1079",
+      "title": "usage analytics panel intermittently times out through reporting-service",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by synthetic monitor while validating reporting-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-03-25"
+    },
+    {
+      "ticket_id": "AIDASH-1080",
+      "title": "admin-console rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: support teams cannot open customer-specific health dashboards. Detected by weekly adoption review while validating admin-console. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-03-26"
+    },
+    {
+      "ticket_id": "AIDASH-1081",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: product owners cannot compare model performance after release. Detected by synthetic monitor while validating dashboard-api. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1077",
+      "created_date": "2026-03-27"
+    },
+    {
+      "ticket_id": "AIDASH-1082",
+      "title": "analytics-worker deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by SRE anomaly detector while validating analytics-worker. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-03-28"
+    },
+    {
+      "ticket_id": "AIDASH-1083",
+      "title": "notification-service cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: SREs cannot compare pre-release and post-release behavior. Detected by weekly adoption review while validating notification-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-03-29"
+    },
+    {
+      "ticket_id": "AIDASH-1084",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: tenant administrators repeat manual filtering after every refresh. Detected by release verification checklist while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-03-30"
+    },
+    {
+      "ticket_id": "AIDASH-1085",
+      "title": "usage analytics panel intermittently times out through telemetry-ingestion",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: executive users see incomplete cost and usage summaries. Detected by synthetic monitor while validating telemetry-ingestion. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1078",
+      "created_date": "2026-03-31"
+    },
+    {
+      "ticket_id": "AIDASH-1086",
+      "title": "model-insights-service rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: support teams cannot open customer-specific health dashboards. Detected by release verification checklist while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-04-01"
+    },
+    {
+      "ticket_id": "AIDASH-1087",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: customer success teams rely on outdated adoption metrics. Detected by release verification checklist while validating feature-store-sync. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-04-02"
+    },
+    {
+      "ticket_id": "AIDASH-1088",
+      "title": "auth-service deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: feature flags remain enabled after the rollback job completes. Impact: dependent analytics features remain behind a release hold. Detected by release verification checklist while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-04-03"
+    },
+    {
+      "ticket_id": "AIDASH-1089",
+      "title": "reporting-service cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by synthetic monitor while validating reporting-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1081",
+      "created_date": "2026-04-04"
+    },
+    {
+      "ticket_id": "AIDASH-1090",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: platform operators cannot scan incidents across large portfolios. Detected by synthetic monitor while validating admin-console. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-04-05"
+    },
+    {
+      "ticket_id": "AIDASH-1091",
+      "title": "usage analytics panel intermittently times out through dashboard-api",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: SRE dashboards miss current deployment health markers. Detected by release verification checklist while validating dashboard-api. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-04-06"
+    },
+    {
+      "ticket_id": "AIDASH-1092",
+      "title": "analytics-worker rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: release managers lose access during production verification. Detected by weekly adoption review while validating analytics-worker. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-04-07"
+    },
+    {
+      "ticket_id": "AIDASH-1093",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: customer success teams rely on outdated adoption metrics. Detected by synthetic monitor while validating notification-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1086",
+      "created_date": "2026-04-08"
+    },
+    {
+      "ticket_id": "AIDASH-1094",
+      "title": "vector-search-gateway deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: dependent analytics features remain behind a release hold. Detected by synthetic monitor while validating vector-search-gateway. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-04-09"
+    },
+    {
+      "ticket_id": "AIDASH-1095",
+      "title": "telemetry-ingestion cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: SREs cannot compare pre-release and post-release behavior. Detected by customer support escalation while validating telemetry-ingestion. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-04-10"
+    },
+    {
+      "ticket_id": "AIDASH-1096",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: platform operators cannot scan incidents across large portfolios. Detected by release verification checklist while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-04-11"
+    },
+    {
+      "ticket_id": "AIDASH-1097",
+      "title": "usage analytics panel intermittently times out through feature-store-sync",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: executive users see incomplete cost and usage summaries. Detected by customer support escalation while validating feature-store-sync. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1090",
+      "created_date": "2026-04-12"
+    },
+    {
+      "ticket_id": "AIDASH-1098",
+      "title": "auth-service rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: release managers lose access during production verification. Detected by weekly adoption review while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-04-13"
+    },
+    {
+      "ticket_id": "AIDASH-1099",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by customer support escalation while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-04-14"
+    },
+    {
+      "ticket_id": "AIDASH-1100",
+      "title": "admin-console deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: the release train is paused for the AI Dashboard program. Detected by SRE anomaly detector while validating admin-console. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-04-15"
+    },
+    {
+      "ticket_id": "AIDASH-1101",
+      "title": "dashboard-api cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: SREs cannot compare pre-release and post-release behavior. Detected by release verification checklist while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1093",
+      "created_date": "2026-04-16"
+    },
+    {
+      "ticket_id": "AIDASH-1102",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: tenant administrators repeat manual filtering after every refresh. Detected by customer support escalation while validating analytics-worker. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-04-17"
+    },
+    {
+      "ticket_id": "AIDASH-1103",
+      "title": "usage analytics panel intermittently times out through notification-service",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: SRE dashboards miss current deployment health markers. Detected by synthetic monitor while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-04-18"
+    },
+    {
+      "ticket_id": "AIDASH-1104",
+      "title": "vector-search-gateway rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: release managers lose access during production verification. Detected by customer support escalation while validating vector-search-gateway. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-04-19"
+    },
+    {
+      "ticket_id": "AIDASH-1105",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: late-arriving embeddings are excluded from quality scorecards. Impact: product owners cannot compare model performance after release. Detected by release verification checklist while validating telemetry-ingestion. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1102",
+      "created_date": "2026-04-20"
+    },
+    {
+      "ticket_id": "AIDASH-1106",
+      "title": "model-insights-service deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: dependent analytics features remain behind a release hold. Detected by customer support escalation while validating model-insights-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-04-21"
+    },
+    {
+      "ticket_id": "AIDASH-1107",
+      "title": "feature-store-sync cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by synthetic monitor while validating feature-store-sync. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-04-22"
+    },
+    {
+      "ticket_id": "AIDASH-1108",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: tenant administrators repeat manual filtering after every refresh. Detected by weekly adoption review while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-04-23"
+    },
+    {
+      "ticket_id": "AIDASH-1109",
+      "title": "usage analytics panel intermittently times out through reporting-service",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by release verification checklist while validating reporting-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1107",
+      "created_date": "2026-04-24"
+    },
+    {
+      "ticket_id": "AIDASH-1110",
+      "title": "admin-console rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: support teams cannot open customer-specific health dashboards. Detected by weekly adoption review while validating admin-console. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-04-25"
+    },
+    {
+      "ticket_id": "AIDASH-1111",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: customer success teams rely on outdated adoption metrics. Detected by weekly adoption review while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-04-26"
+    },
+    {
+      "ticket_id": "AIDASH-1112",
+      "title": "analytics-worker deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: dependent analytics features remain behind a release hold. Detected by release verification checklist while validating analytics-worker. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-04-27"
+    },
+    {
+      "ticket_id": "AIDASH-1113",
+      "title": "notification-service cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: SREs cannot compare pre-release and post-release behavior. Detected by synthetic monitor while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1107",
+      "created_date": "2026-04-28"
+    },
+    {
+      "ticket_id": "AIDASH-1114",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: business stakeholders export inconsistent weekly summaries. Detected by synthetic monitor while validating vector-search-gateway. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-04-29"
+    },
+    {
+      "ticket_id": "AIDASH-1115",
+      "title": "usage analytics panel intermittently times out through telemetry-ingestion",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: SRE dashboards miss current deployment health markers. Detected by weekly adoption review while validating telemetry-ingestion. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-04-30"
+    },
+    {
+      "ticket_id": "AIDASH-1116",
+      "title": "model-insights-service rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: token exchange succeeds but the session bootstrap request is denied. Impact: release managers lose access during production verification. Detected by synthetic monitor while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-05-01"
+    },
+    {
+      "ticket_id": "AIDASH-1117",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: product owners cannot compare model performance after release. Detected by synthetic monitor while validating feature-store-sync. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1111",
+      "created_date": "2026-05-02"
+    },
+    {
+      "ticket_id": "AIDASH-1118",
+      "title": "auth-service deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: dependent analytics features remain behind a release hold. Detected by SRE anomaly detector while validating auth-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-05-03"
+    },
+    {
+      "ticket_id": "AIDASH-1119",
+      "title": "reporting-service cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: SREs cannot compare pre-release and post-release behavior. Detected by release verification checklist while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-05-04"
+    },
+    {
+      "ticket_id": "AIDASH-1120",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: business stakeholders export inconsistent weekly summaries. Detected by SRE anomaly detector while validating admin-console. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-05-05"
+    },
+    {
+      "ticket_id": "AIDASH-1121",
+      "title": "usage analytics panel intermittently times out through dashboard-api",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: workers retry the same trace window and saturate the API pool. Impact: SRE dashboards miss current deployment health markers. Detected by release verification checklist while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1115",
+      "created_date": "2026-05-06"
+    },
+    {
+      "ticket_id": "AIDASH-1122",
+      "title": "analytics-worker rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: release managers lose access during production verification. Detected by release verification checklist while validating analytics-worker. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-05-07"
+    },
+    {
+      "ticket_id": "AIDASH-1123",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: late-arriving embeddings are excluded from quality scorecards. Impact: incident commanders lose confidence in the operational timeline. Detected by weekly adoption review while validating notification-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-05-08"
+    },
+    {
+      "ticket_id": "AIDASH-1124",
+      "title": "vector-search-gateway deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: production verification cannot complete within the maintenance window. Detected by SRE anomaly detector while validating vector-search-gateway. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-05-09"
+    },
+    {
+      "ticket_id": "AIDASH-1125",
+      "title": "telemetry-ingestion cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by customer support escalation while validating telemetry-ingestion. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1121",
+      "created_date": "2026-05-10"
+    },
+    {
+      "ticket_id": "AIDASH-1126",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: tenant administrators repeat manual filtering after every refresh. Detected by weekly adoption review while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-05-11"
+    },
+    {
+      "ticket_id": "AIDASH-1127",
+      "title": "usage analytics panel intermittently times out through feature-store-sync",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: operators cannot triage model incidents from the live board. Detected by release verification checklist while validating feature-store-sync. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-05-12"
+    },
+    {
+      "ticket_id": "AIDASH-1128",
+      "title": "auth-service rejects valid enterprise tokens in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: support teams cannot open customer-specific health dashboards. Detected by synthetic monitor while validating auth-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-05-13"
+    },
+    {
+      "ticket_id": "AIDASH-1129",
+      "title": "production aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: hourly usage aggregates stop advancing while raw events continue. Impact: product owners cannot compare model performance after release. Detected by weekly adoption review while validating reporting-service. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1124",
+      "created_date": "2026-05-14"
+    },
+    {
+      "ticket_id": "AIDASH-1130",
+      "title": "admin-console deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: dependent analytics features remain behind a release hold. Detected by weekly adoption review while validating admin-console. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-05-15"
+    },
+    {
+      "ticket_id": "AIDASH-1131",
+      "title": "dashboard-api cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: backfilled rows lose the deployment timestamp used for correlation. Impact: SREs cannot compare pre-release and post-release behavior. Detected by SRE anomaly detector while validating dashboard-api. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-05-16"
+    },
+    {
+      "ticket_id": "AIDASH-1132",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: the table virtualization layer reuses stale row measurements. Impact: platform operators cannot scan incidents across large portfolios. Detected by customer support escalation while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-05-17"
+    },
+    {
+      "ticket_id": "AIDASH-1133",
+      "title": "usage analytics panel intermittently times out through notification-service",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: p95 latency crossed the dashboard SLO for tenant-facing requests. Impact: executive users see incomplete cost and usage summaries. Detected by customer support escalation while validating notification-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1125",
+      "created_date": "2026-05-18"
+    },
+    {
+      "ticket_id": "AIDASH-1134",
+      "title": "vector-search-gateway rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: tenant admins cannot audit model usage permissions. Detected by SRE anomaly detector while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-05-19"
+    },
+    {
+      "ticket_id": "AIDASH-1135",
+      "title": "dev aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: customer success teams rely on outdated adoption metrics. Detected by synthetic monitor while validating telemetry-ingestion. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-05-20"
+    },
+    {
+      "ticket_id": "AIDASH-1136",
+      "title": "model-insights-service deployment blocked by config drift in staging",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: the canary pod never reaches ready state after environment injection. Impact: production verification cannot complete within the maintenance window. Detected by weekly adoption review while validating model-insights-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "SEC-228 service account rotation",
+      "created_date": "2026-05-21"
+    },
+    {
+      "ticket_id": "AIDASH-1137",
+      "title": "feature-store-sync cannot read new AI metrics schema in production",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: SREs cannot compare pre-release and post-release behavior. Detected by weekly adoption review while validating feature-store-sync. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1129",
+      "created_date": "2026-05-22"
+    },
+    {
+      "ticket_id": "AIDASH-1138",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: business stakeholders export inconsistent weekly summaries. Detected by customer support escalation while validating auth-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-05-23"
+    },
+    {
+      "ticket_id": "AIDASH-1139",
+      "title": "usage analytics panel intermittently times out through reporting-service",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: interactive filters spin for longer than 20 seconds before failing. Impact: executive users see incomplete cost and usage summaries. Detected by customer support escalation while validating reporting-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-05-24"
+    },
+    {
+      "ticket_id": "AIDASH-1140",
+      "title": "admin-console rejects valid enterprise tokens in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: newly provisioned support users receive a stale permission snapshot. Impact: release managers lose access during production verification. Detected by customer support escalation while validating admin-console. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "OBS-319 trace sampling policy rollout",
+      "created_date": "2026-05-25"
+    },
+    {
+      "ticket_id": "AIDASH-1141",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: late-arriving embeddings are excluded from quality scorecards. Impact: customer success teams rely on outdated adoption metrics. Detected by release verification checklist while validating dashboard-api. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "AIDASH-1137",
+      "created_date": "2026-05-26"
+    },
+    {
+      "ticket_id": "AIDASH-1142",
+      "title": "analytics-worker deployment blocked by config drift in production",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: production verification cannot complete within the maintenance window. Detected by weekly adoption review while validating analytics-worker. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "NET-116 private endpoint firewall rule",
+      "created_date": "2026-05-27"
+    },
+    {
+      "ticket_id": "AIDASH-1143",
+      "title": "notification-service cannot read new AI metrics schema in dev",
+      "description": "AI Dashboard issue in dev affecting usage analytics panel. Observed symptom: migration workers wait on an exclusive lock for the dashboard schema. Impact: reports cannot reconcile deployment outcomes with incident volume. Detected by customer support escalation while validating notification-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "None",
+      "created_date": "2026-01-06"
+    },
+    {
+      "ticket_id": "AIDASH-1144",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in staging affecting incident correlation board. Observed symptom: export controls render before the permissions payload is available. Impact: platform operators cannot scan incidents across large portfolios. Detected by customer support escalation while validating vector-search-gateway. Expected outcome: dashboard panels should load within the enterprise SLO. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "DATA-441 warehouse replication lag fix",
+      "created_date": "2026-01-07"
+    },
+    {
+      "ticket_id": "AIDASH-1145",
+      "title": "usage analytics panel intermittently times out through telemetry-ingestion",
+      "description": "AI Dashboard issue in production affecting usage analytics panel. Observed symptom: interactive filters spin for longer than 20 seconds before failing. Impact: executive users see incomplete cost and usage summaries. Detected by release verification checklist while validating telemetry-ingestion. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P0",
+      "status": "Blocked",
+      "owner": "Maya Iyer",
+      "dependency": "AIDASH-1140",
+      "created_date": "2026-01-08"
+    },
+    {
+      "ticket_id": "AIDASH-1146",
+      "title": "model-insights-service rejects valid enterprise tokens in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: OIDC group claims arrive without the expected dashboard role alias. Impact: support teams cannot open customer-specific health dashboards. Detected by SRE anomaly detector while validating model-insights-service. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P1",
+      "status": "In Progress",
+      "owner": "Leena Thomas",
+      "dependency": "MLP-904 model telemetry schema update",
+      "created_date": "2026-01-09"
+    },
+    {
+      "ticket_id": "AIDASH-1147",
+      "title": "staging aggregation job skips AI usage windows",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: project health summaries show yesterday's deployment status. Impact: incident commanders lose confidence in the operational timeline. Detected by synthetic monitor while validating feature-store-sync. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P2",
+      "status": "Backlog",
+      "owner": "Vikram Kapoor",
+      "dependency": "DBA-673 read replica capacity review",
+      "created_date": "2026-01-10"
+    },
+    {
+      "ticket_id": "AIDASH-1148",
+      "title": "auth-service deployment blocked by config drift in dev",
+      "description": "AI Dashboard issue in dev affecting incident correlation board. Observed symptom: post-deploy smoke checks fail on tenant-scoped dashboard endpoints. Impact: the release train is paused for the AI Dashboard program. Detected by release verification checklist while validating auth-service. Expected outcome: deployment health should reconcile with logs and active incidents. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P3",
+      "status": "Closed",
+      "owner": "Maya Iyer",
+      "dependency": "AUTH-782 SSO claims mapping update",
+      "created_date": "2026-01-11"
+    },
+    {
+      "ticket_id": "AIDASH-1149",
+      "title": "reporting-service cannot read new AI metrics schema in staging",
+      "description": "AI Dashboard issue in staging affecting usage analytics panel. Observed symptom: new nullable fields are treated as required by the reporting query. Impact: dashboard tiles fail for tenants with high event cardinality. Detected by weekly adoption review while validating reporting-service. Expected outcome: role-aware users should see the same project inventory across sessions. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "Resolved",
+      "owner": "Leena Thomas",
+      "dependency": "AIDASH-1144",
+      "created_date": "2026-01-12"
+    },
+    {
+      "ticket_id": "AIDASH-1150",
+      "title": "Filtering state resets when users open incident correlation board",
+      "description": "AI Dashboard issue in production affecting incident correlation board. Observed symptom: saved filters are dropped when a workspace has more than 30 services. Impact: business stakeholders export inconsistent weekly summaries. Detected by SRE anomaly detector while validating admin-console. Expected outcome: aggregated metrics should match the warehouse snapshot for the same hour. Initial triage should inspect traces, recent deployments, feature flags, and related tickets before marking the incident resolved.",
+      "priority": "P4",
+      "status": "In Review",
+      "owner": "Vikram Kapoor",
+      "dependency": "REL-517 release pipeline approval",
+      "created_date": "2026-01-13"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!.env.docker.example
+
+# Python environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches and generated artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Runtime data
+data/chroma/
+chroma-data/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
