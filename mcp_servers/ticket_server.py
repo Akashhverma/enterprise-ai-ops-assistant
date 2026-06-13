@@ -19,7 +19,7 @@ repository = EnterpriseDatasetRepository()
 mcp = FastMCP(
     name="AI Dashboard Ticket MCP Server",
     mask_error_details=True,
-    on_duplicate_tools="error",
+    on_duplicate="error",
 )
 
 
@@ -94,4 +94,3 @@ async def health(_: Request) -> JSONResponse:
 
 if __name__ == "__main__":
     run_server(mcp, default_port=get_port("TICKET_MCP_PORT", 8101))
-

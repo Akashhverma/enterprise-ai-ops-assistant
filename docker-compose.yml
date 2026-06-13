@@ -1,26 +1,44 @@
 name: enterprise-ai-ops-assistant
 
 services:
-  chromadb:
-    image: ${CHROMA_IMAGE:-chromadb/chroma:1.5.3}
-    container_name: aiops-chromadb
+  mongodb:
+    image: ${MONGODB_IMAGE:-mongo:8.0}
+    container_name: aiops-mongodb
     restart: unless-stopped
+    ports:
+      - "${MONGODB_HOST_PORT:-27017}:27017"
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - aiops
+
+  mongo-ingest:
+    build:
+      context: .
+      dockerfile: docker/mcp.Dockerfile
+    container_name: aiops-mongo-ingest
+    restart: "no"
     env_file:
       - .env.docker
     environment:
-      IS_PERSISTENT: "TRUE"
-      PERSIST_DIRECTORY: /data
-      ANONYMIZED_TELEMETRY: ${ANONYMIZED_TELEMETRY:-False}
-    ports:
-      - "${CHROMA_HOST_PORT:-8001}:8000"
-    volumes:
-      - chroma_data:/data
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v2/heartbeat"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
+      MONGODB_URI: ${MONGODB_URI:-mongodb://mongodb:27017}
+    command:
+      - sh
+      - -c
+      - >-
+        if [ "$${MONGODB_REQUIRE_EMBEDDINGS:-false}" = "true" ];
+        then python scripts/ingest_mongodb_documents.py --require-embeddings;
+        else python scripts/ingest_mongodb_documents.py;
+        fi
+    depends_on:
+      mongodb:
+        condition: service_healthy
     networks:
       - aiops
 
@@ -58,9 +76,13 @@ services:
     environment:
       MCP_SERVER: document
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      MONGODB_URI: ${MONGODB_URI:-mongodb://mongodb:27017}
       HEALTHCHECK_URL: http://127.0.0.1:8102/health
     ports:
       - "8102:8102"
+    depends_on:
+      mongo-ingest:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "python", "/app/docker/healthcheck.py"]
       interval: 30s
@@ -103,14 +125,15 @@ services:
       - .env.docker
     environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      CHROMA_HOST: chromadb
-      CHROMA_PORT: 8000
+      MCP_CLIENT_MODE: http
+      MCP_ALLOW_LOCAL_FALLBACK: "false"
+      TICKET_MCP_URL: http://ticket-mcp:8101/mcp
+      DOCUMENT_MCP_URL: http://document-mcp:8102/mcp
+      LOG_MCP_URL: http://log-mcp:8103/mcp
       HEALTHCHECK_URL: http://127.0.0.1:8000/health
     ports:
       - "8000:8000"
     depends_on:
-      chromadb:
-        condition: service_healthy
       ticket-mcp:
         condition: service_healthy
       document-mcp:
@@ -157,4 +180,4 @@ networks:
     driver: bridge
 
 volumes:
-  chroma_data:
+  mongodb_data:

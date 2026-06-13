@@ -470,7 +470,18 @@ def render_tool_calls() -> None:
     cols = st.columns([0.58, 0.42], gap="large")
     with cols[0]:
         st.dataframe(
-            frame[["server", "tool_name", "status", "attempts", "result_count", "error"]],
+            frame[
+                [
+                    "server",
+                    "tool_name",
+                    "transport",
+                    "fallback_used",
+                    "status",
+                    "attempts",
+                    "result_count",
+                    "error",
+                ]
+            ],
             use_container_width=True,
         )
     with cols[1]:
@@ -556,4 +567,3 @@ def _status_class(status: str) -> str:
 
 if __name__ == "__main__":
     main()
-

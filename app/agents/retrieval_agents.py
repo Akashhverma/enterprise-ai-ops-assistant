@@ -177,7 +177,10 @@ def _append_document_results(result: dict[str, Any] | None, evidence: list[Evide
     if not result:
         return
 
+    search_mode = result.get("search_mode")
     for document in result.get("results", []):
+        document = dict(document)
+        document["search_mode"] = search_mode
         evidence.append(
             _document_to_evidence(document, relevance_score=float(document.get("relevance_score", 0.0)))
         )
@@ -209,12 +212,20 @@ def _ticket_to_evidence(ticket: dict[str, Any], *, relevance_score: float) -> Ev
 
 
 def _document_to_evidence(document: dict[str, Any], *, relevance_score: float) -> EvidenceItem:
-    sections = document.get("sections", [])
-    section_text = " ".join(
-        f"{section.get('heading', '')}: {section.get('body', '')}"
-        for section in sections
-        if isinstance(section, dict)
-    )
+    semantic_snippets = document.get("semantic_snippets", [])
+    if semantic_snippets:
+        section_text = " ".join(
+            f"{snippet.get('heading', '')}: {snippet.get('content', '')}"
+            for snippet in semantic_snippets
+            if isinstance(snippet, dict)
+        )
+    else:
+        sections = document.get("sections", [])
+        section_text = " ".join(
+            f"{section.get('heading', '')}: {section.get('body', '')}"
+            for section in sections
+            if isinstance(section, dict)
+        )
     return EvidenceItem(
         source_type="document",
         source_id=str(document["document_id"]),
@@ -228,6 +239,8 @@ def _document_to_evidence(document: dict[str, Any], *, relevance_score: float) -
             "owner_team": document.get("owner_team"),
             "version": document.get("version"),
             "related_ticket_ids": document.get("related_ticket_ids", []),
+            "semantic_snippets": semantic_snippets,
+            "search_mode": document.get("search_mode"),
         },
     )
 
@@ -306,4 +319,3 @@ def _agent_output(
         tool_calls=tool_calls,
         errors=errors,
     )
-

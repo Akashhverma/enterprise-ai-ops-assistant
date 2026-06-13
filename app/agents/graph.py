@@ -8,7 +8,7 @@ from langgraph.types import RetryPolicy
 
 from mcp_servers.common.logging_config import configure_logging
 
-from .mcp_tool_client import LocalMCPToolClient, MCPToolClient
+from .mcp_tool_client import MCPToolClient, create_mcp_tool_client
 from .models import AgentOutput, FinalReport, PlannerOutput
 from .planner import PlannerAgent
 from .report import ReportAgent
@@ -20,7 +20,7 @@ logger = configure_logging(__name__)
 
 
 def build_ops_assistant_graph(tool_client: MCPToolClient | None = None):
-    client = tool_client or LocalMCPToolClient(logger=logger)
+    client = tool_client or create_mcp_tool_client(logger=logger)
     planner_agent = PlannerAgent()
     ticket_agent = TicketAgent(client)
     document_agent = DocumentAgent(client)
@@ -142,4 +142,3 @@ def _agent_output_from_state(state: OpsAssistantState, key: str) -> AgentOutput:
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-

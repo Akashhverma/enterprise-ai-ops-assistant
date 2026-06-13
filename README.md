@@ -2,7 +2,7 @@
 
 A production-style AI operations copilot that investigates enterprise incidents by correlating Jira-style tickets, project documents, and deployment logs.
 
-The system combines FastMCP tools, a LangGraph multi-agent workflow, FastAPI APIs, a Streamlit dashboard, ChromaDB infrastructure, OpenAI integration, and Docker Compose deployment.
+The system combines FastMCP tools, a LangGraph multi-agent workflow, FastAPI APIs, a Streamlit dashboard, MongoDB Vector Search, OpenAI embeddings, and Docker Compose deployment.
 
 ## What It Does
 
@@ -53,7 +53,7 @@ flowchart TD
     Report --> API
     API --> UI
 
-    Chroma[(ChromaDB)] -. Vector infrastructure .-> DocumentTools
+    Mongo[(MongoDB Vector Search)] --> DocumentTools
     OpenAI[OpenAI API] -. Optional structured reasoning .-> Planner
     OpenAI -. Optional report synthesis .-> Report
 ```
@@ -67,7 +67,7 @@ flowchart TD
 | Tool protocol | FastMCP |
 | Backend API | FastAPI |
 | Frontend | Streamlit |
-| Vector database | ChromaDB |
+| Operational and vector database | MongoDB / MongoDB Atlas Vector Search |
 | LLM integration | OpenAI API |
 | Validation | Pydantic |
 | Deployment | Docker Compose |
@@ -243,6 +243,14 @@ python scripts\run_streamlit.py
 
 ## Docker Deployment
 
+Create the Docker environment file after cloning:
+
+```powershell
+Copy-Item .env.docker.example .env.docker
+```
+
+Add a valid `OPENAI_API_KEY` to `.env.docker` to generate document embeddings during startup.
+
 Start the complete stack:
 
 ```powershell
@@ -256,7 +264,7 @@ Services:
 | Streamlit | http://127.0.0.1:8501 |
 | FastAPI | http://127.0.0.1:8000 |
 | OpenAPI docs | http://127.0.0.1:8000/docs |
-| ChromaDB | http://127.0.0.1:8001 |
+| MongoDB | mongodb://127.0.0.1:27017 |
 | Ticket MCP | http://127.0.0.1:8101/health |
 | Document MCP | http://127.0.0.1:8102/health |
 | Log MCP | http://127.0.0.1:8103/health |
@@ -267,7 +275,7 @@ Stop the stack:
 docker compose down
 ```
 
-Remove containers and persisted ChromaDB data:
+Remove containers and persisted MongoDB data:
 
 ```powershell
 docker compose down -v
@@ -324,14 +332,23 @@ enterprise-ai-ops-assistant/
 - OpenAPI schemas
 - Docker restart policies
 - Non-root application containers
-- Persistent ChromaDB volume
+- Persistent MongoDB volume
+- OpenAI document embeddings
+- Atlas `$vectorSearch` with local cosine-search fallback
+- Real FastMCP HTTP calls from LangGraph
 - Local fallback when OpenAI is unavailable
 
 ## Current Implementation Note
 
-The default LangGraph execution path currently uses an MCP-compatible local tool adapter over the JSON repository. The standalone MCP HTTP servers and ChromaDB service are deployed independently and ready for deeper integration.
+Docker uses real FastMCP HTTP calls from LangGraph. Local development can select `local`, `http`, or `auto` MCP client mode.
 
-The next production evolution would connect LangGraph directly to the network MCP servers and add embedding ingestion plus semantic retrieval through ChromaDB.
+Document search stores document chunks and OpenAI embeddings in MongoDB. Atlas deployments use native `$vectorSearch`; standard local MongoDB uses cosine similarity over the same stored embeddings.
+
+For full semantic retrieval, configure `OPENAI_API_KEY` and run:
+
+```powershell
+python scripts\ingest_mongodb_documents.py --require-embeddings
+```
 
 ## Security
 

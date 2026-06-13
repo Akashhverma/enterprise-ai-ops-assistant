@@ -44,6 +44,8 @@ class ToolCallRecord(BaseModel):
     arguments: dict[str, Any] = Field(default_factory=dict)
     status: Literal["success", "failed"]
     attempts: int
+    transport: Literal["local", "http"] = "local"
+    fallback_used: bool = False
     result_count: int | None = None
     error: str | None = None
 
@@ -81,4 +83,3 @@ class FinalReport(BaseModel):
     source_summary: dict[str, str] = Field(default_factory=dict)
     next_actions: list[str] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
-

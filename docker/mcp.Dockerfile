@@ -13,6 +13,7 @@ COPY pyproject.toml ./
 COPY mcp_servers ./mcp_servers
 COPY data ./data
 COPY docker ./docker
+COPY scripts ./scripts
 
 RUN pip install --upgrade pip \
     && pip install .

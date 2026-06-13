@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import asyncio
 import logging
 import time
 from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Literal, Protocol
 
 from mcp_servers.common.errors import DatasetLoadError, RecordNotFoundError, ToolInputError
@@ -60,6 +62,7 @@ class LocalMCPToolClient:
                     arguments=arguments,
                     status="success",
                     attempts=attempts,
+                    transport="local",
                     result_count=_result_count(result),
                 )
                 self._logger.info(
@@ -94,6 +97,7 @@ class LocalMCPToolClient:
             arguments=arguments,
             status="failed",
             attempts=attempts,
+            transport="local",
             error=last_error or "Unknown tool error.",
         )
         self._logger.error(
@@ -128,6 +132,148 @@ class LocalMCPToolClient:
         return operation(**arguments)
 
 
+class HTTPMCPToolClient:
+    """FastMCP HTTP client used by LangGraph retrieval agents."""
+
+    def __init__(
+        self,
+        *,
+        logger: logging.Logger | None = None,
+        fallback: MCPToolClient | None = None,
+    ) -> None:
+        config = get_agent_runtime_config()
+        self._logger = logger or logging.getLogger(__name__)
+        self._max_attempts = config.max_tool_attempts
+        self._timeout = config.mcp_timeout_seconds
+        self._urls: dict[ServerName, str] = {
+            "ticket": config.ticket_mcp_url,
+            "document": config.document_mcp_url,
+            "log": config.log_mcp_url,
+        }
+        self._fallback = fallback
+
+    def call_tool(
+        self,
+        server: ServerName,
+        tool_name: str,
+        arguments: dict[str, Any],
+    ) -> tuple[dict[str, Any] | None, ToolCallRecord]:
+        last_error: str | None = None
+        attempts = 0
+
+        for attempts in range(1, self._max_attempts + 1):
+            try:
+                result = _run_async(
+                    self._call_tool_async(server, tool_name, arguments)
+                )
+                call_record = ToolCallRecord(
+                    server=server,
+                    tool_name=tool_name,
+                    arguments=arguments,
+                    status="success",
+                    attempts=attempts,
+                    transport="http",
+                    result_count=_result_count(result),
+                )
+                self._logger.info(
+                    "mcp_tool_call server=%s tool=%s transport=http status=success "
+                    "attempts=%s result_count=%s",
+                    server,
+                    tool_name,
+                    attempts,
+                    call_record.result_count,
+                )
+                return result, call_record
+            except Exception as exc:
+                last_error = str(exc)
+                self._logger.warning(
+                    "mcp_tool_call server=%s tool=%s transport=http status=retryable_error "
+                    "attempts=%s error=%s",
+                    server,
+                    tool_name,
+                    attempts,
+                    exc,
+                )
+                if attempts < self._max_attempts:
+                    time.sleep(min(0.25 * attempts, 1.0))
+
+        if self._fallback is not None:
+            result, fallback_record = self._fallback.call_tool(
+                server, tool_name, arguments
+            )
+            fallback_record.fallback_used = True
+            if fallback_record.status == "success":
+                self._logger.warning(
+                    "mcp_tool_call server=%s tool=%s transport=http fallback=local",
+                    server,
+                    tool_name,
+                )
+                return result, fallback_record
+            last_error = (
+                f"HTTP error: {last_error}; fallback error: {fallback_record.error}"
+            )
+
+        return None, ToolCallRecord(
+            server=server,
+            tool_name=tool_name,
+            arguments=arguments,
+            status="failed",
+            attempts=attempts,
+            transport="http",
+            error=last_error or "Unknown MCP HTTP error.",
+        )
+
+    async def _call_tool_async(
+        self,
+        server: ServerName,
+        tool_name: str,
+        arguments: dict[str, Any],
+    ) -> dict[str, Any]:
+        try:
+            from fastmcp import Client
+        except ImportError as exc:
+            raise RuntimeError(
+                "fastmcp is required for MCP HTTP tool calls."
+            ) from exc
+
+        client = Client(self._urls[server], timeout=self._timeout)
+        async with client:
+            result = await client.call_tool(
+                tool_name,
+                arguments,
+                timeout=self._timeout,
+            )
+
+        data = result.data
+        if data is None:
+            data = result.structured_content
+        if hasattr(data, "model_dump"):
+            data = data.model_dump()
+        if not isinstance(data, dict):
+            raise RuntimeError(
+                f"MCP tool {server}.{tool_name} returned unsupported data: {type(data)!r}"
+            )
+        return data
+
+
+def create_mcp_tool_client(
+    *,
+    logger: logging.Logger | None = None,
+) -> MCPToolClient:
+    config = get_agent_runtime_config()
+    local = LocalMCPToolClient(logger=logger)
+
+    if config.mcp_client_mode == "local":
+        return local
+    if config.mcp_client_mode == "http":
+        fallback = local if config.mcp_allow_local_fallback else None
+        return HTTPMCPToolClient(logger=logger, fallback=fallback)
+    if config.mcp_client_mode == "auto":
+        return HTTPMCPToolClient(logger=logger, fallback=local)
+
+    raise ValueError("MCP_CLIENT_MODE must be local, http, or auto.")
+
+
 def _result_count(result: dict[str, Any]) -> int | None:
     count = result.get("count")
     if isinstance(count, int):
@@ -143,3 +289,12 @@ def _result_count(result: dict[str, Any]) -> int | None:
 
     return None
 
+
+def _run_async(coroutine: Any) -> Any:
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return asyncio.run(coroutine)
+
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        return executor.submit(asyncio.run, coroutine).result()
